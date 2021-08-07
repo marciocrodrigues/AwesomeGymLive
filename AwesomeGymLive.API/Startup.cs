@@ -1,16 +1,18 @@
+using AwesomeGymLive.Application;
+using AwesomeGymLive.Application.Commands.AddStudent;
+using AwesomeGymLive.Application.Queries.GetStudents;
+using AwesomeGymLive.Application.Repositories;
+using AwesomeGymLive.Domain;
+using AwesomeGymLive.Domain.Interfaces;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AwesomeGymLive.API
 {
@@ -27,11 +29,23 @@ namespace AwesomeGymLive.API
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddMediatR(typeof(Startup));
+
+            services.AddDbContext<StudentContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("StudentConnection"))
+            );
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AwesomeGymLive.API", Version = "v1" });
             });
+
+            services.AddScoped<IStudentRepository, StudentRepository>();
+            services.AddScoped<IRequestHandler<AddStudentCommand, bool>, AddStudentCommandHandler>();
+            services.AddScoped<IRequestHandler<GetStudentQueryById, GetStudentsViewModel>, GetStudentQueryHandler>();
+            services.AddScoped<IRequestHandler<GetStudentByName, List<GetStudentsViewModel>>, GetStudentQueryHandler>();
+            services.AddScoped<IRequestHandler<GetStudentQueryAll, List<GetStudentsViewModel>>, GetStudentQueryHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
