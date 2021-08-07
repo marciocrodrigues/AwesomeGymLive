@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwesomeGymLive.API", "Aweso
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwesomeGymLive.Application", "AwesomeGymLive.Application\AwesomeGymLive.Application.csproj", "{02020241-F3A8-4653-AB52-C0EDC7D77BA0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwesomeGymLive.Domain", "AwesomeGymLive.Domain\AwesomeGymLive.Domain.csproj", "{81A761DE-5B29-4238-89A0-2258A50C9126}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{02020241-F3A8-4653-AB52-C0EDC7D77BA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02020241-F3A8-4653-AB52-C0EDC7D77BA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02020241-F3A8-4653-AB52-C0EDC7D77BA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81A761DE-5B29-4238-89A0-2258A50C9126}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81A761DE-5B29-4238-89A0-2258A50C9126}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81A761DE-5B29-4238-89A0-2258A50C9126}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81A761DE-5B29-4238-89A0-2258A50C9126}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
